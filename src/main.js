@@ -3,27 +3,28 @@ const API_URL = "https://api.sheety.co/30b6e400-9023-4a15-8e6c-16aa4e3b1e72";
 
 // Para isso, usaremos o "fetch", conforme você deve ter visto nas aulas online.
 // Corrija a linha abaixo, para que a requisição funcione.
-XMLHttpRequest(API_URI)
-  .then(response => response.text())
+fetch(API_URL)
+  .then(response => response.json())
   .then(result => {
     // Aqui, estamos pegando o resultado da requisição e parseando em JSON, 
     // para que fique mais fácil e amigável, tratarmos esses dados.
-    const data = JSON.parse(result);
+    
 
     // Como é mesmo que percorremos um array? 'hm
-    dados.map(element => {
+    result.map(element => {
       // Desestruture seu objeto, trazendo os seguintes dados:
       // Foto, tipo, nome e preço da propriedade.
-      const { variavel, chave } = data;
+      const { photo, property_type, name, price } = element;
+      
 
       // Pegue a linha do container onde serão exibidos os cards.
-      row = document.pega("linha");
+      const row = document.getElementById("linha");
 
       // Agora, crie um elemento "div" com a class "col-md-4" do Bootstrap.
-      div = document.criaElemento("div");
+      const div = document.createElement("div");
       div.nomeDaClasse = "col-md-4";
 
-      // Boa! Agora, precisamos criar a "div" do card a ser exibido. Ao criar, atribua a class "card mb-4 box-shadow".
+      /*// Boa! Agora, precisamos criar a "div" do card a ser exibido. Ao criar, atribua a class "card mb-4 box-shadow".
       card = ?
 
       // Humm... Agora que já temos o card, que tal começarmos a popular as informações?
@@ -67,6 +68,6 @@ XMLHttpRequest(API_URI)
       //           propertyPrice
 
       row.appendChild(div);
-      // [ ... ]
+      // [ ... ]*/
     });
   });
